@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Motes Benito</title>
+	<style type="text/css" media="all">
+		td {
+		border:hidden;
+		}
+		table {
+		border: 3px solid #000000;
+		}
+</style> 
+
+</head>
+<body>
+			<center>
+
+				<table style="border: 1; background: #DEDEDE;" >
+					<tr>
+						<td colspan="3">
+							<center><h1>Los Motes del Benito - Tienda online</h1></center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<center><h5>Cualquier plato a $0.50:  choclomote, con chicharrón</h5></center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="mote.jpg" width="75%">
+						</td>
+						<form>
+							<td>
+								<label>Nombre: </label><br>
+								<label># de Choclomotes:  </label><br>
+								<label># de con Chicharrón: </label><br>
+								<label>En Cuántos Minutos viene por su Pedido: </label><br>
+								<label>Subtotal: </label><br>
+								<label>IVA: </label><br>
+								<label>Total: </label><br>
+							</td>
+							<td>
+								<input type="text" id="nombre"></input><br>
+								<input type="text" id="numChoclo" onchange="validar()"></input><br>
+								<input type="text" id="numChicharron" onchange="validar()"></input><br>
+								<input type="text" id="minutos"></input><br>
+								<input type="text" id="subtotal"></input><br>
+								<input type="text" id="iva"></input><br>
+								<input type="text" id="total"></input><br>						
+							</td>
+						</form>
+					</tr>
+				</table>
+			</center>
+</body>
+<script type="text/javascript">
+
+	function choclo() {
+		var numChoclo = document.getElementById("numChoclo").value;
+		const precio = 0.50;
+		var totalChoclo = numChoclo * precio;
+		return totalChoclo;
+	}
+
+	function chicharon() {
+		var numChicharron = document.getElementById("numChicharron").value;
+		const precio = 0.50;
+		var totalChicharron = numChicharron * precio;
+		return totalChicharron;
+	}
+
+
+	function validar(){
+		var numChoclos = choclo();
+		var numChicharrones = chicharon();
+		var subtotal= numChoclos + numChicharrones;
+		const IVA=0.12;	
+
+		document.getElementById("subtotal").value = subtotal.toFixed(2);
+		document.getElementById("iva").value = (document.getElementById("subtotal").value*IVA);
+		document.getElementById("total").value = parseFloat(document.getElementById("subtotal").value)+ parseFloat(document.getElementById("iva").value); 
+	
+	}
+
+</script>
+</html>
